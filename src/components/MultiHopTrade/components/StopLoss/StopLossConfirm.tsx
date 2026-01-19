@@ -3,7 +3,7 @@ import { useCallback } from 'react'
 import { useTranslate } from 'react-polyglot'
 import { useNavigate } from 'react-router-dom'
 
-import { Card } from '@/components/Card/Card'
+import { Card, CardBody } from '@chakra-ui/react'
 import { Text } from '@/components/Text'
 import { stopLossSlice } from '@/state/slices/stopLossSlice/stopLossSlice'
 import {
@@ -51,7 +51,7 @@ export const StopLossConfirm = () => {
             }),
         )
 
-        dispatch(stopLossInputActions.reset())
+        dispatch(stopLossInputActions.clear())
         navigate('../orders')
     }, [
         dispatch,
@@ -67,26 +67,28 @@ export const StopLossConfirm = () => {
 
     return (
         <Card flex={1} borderRadius='xl'>
-            <VStack spacing={6} p={6} align='stretch'>
-                <Text translation='navBar.stopLoss.confirmTitle' fontSize='xl' fontWeight='bold' />
+            <CardBody>
+                <VStack spacing={6} p={6} align='stretch'>
+                    <Text translation='navBar.stopLoss.confirmTitle' fontSize='xl' fontWeight='bold' />
 
-                <VStack align='start' spacing={2}>
-                    <Text translation='navBar.stopLoss.confirmAmount' />
-                    <Text translation={['navBar.stopLoss.value', { value: sellAmountCryptoPrecision }]} />
+                    <VStack align='start' spacing={2}>
+                        <Text translation='navBar.stopLoss.confirmAmount' />
+                        <Text translation={['navBar.stopLoss.value', { value: sellAmountCryptoPrecision }]} />
 
-                    <Text translation='navBar.stopLoss.confirmTrigger' />
-                    <Text
-                        translation={[
-                            'navBar.stopLoss.triggerDetails',
-                            { type: triggerType, value: triggerValue },
-                        ]}
-                    />
+                        <Text translation='navBar.stopLoss.confirmTrigger' />
+                        <Text
+                            translation={[
+                                'navBar.stopLoss.triggerDetails',
+                                { type: triggerType, value: triggerValue },
+                            ]}
+                        />
+                    </VStack>
+
+                    <Button colorScheme='blue' size='lg' onClick={handleConfirm} width='full'>
+                        {translate('navBar.stopLoss.confirmOrder')}
+                    </Button>
                 </VStack>
-
-                <Button colorScheme='blue' size='lg' onClick={handleConfirm} width='full'>
-                    {translate('navBar.stopLoss.confirmOrder')}
-                </Button>
-            </VStack>
+            </CardBody>
         </Card>
     )
 }

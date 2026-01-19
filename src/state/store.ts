@@ -58,7 +58,7 @@ export const clearState = () => {
   store.dispatch(slices.gridplus.actions.clear())
   store.dispatch(slices.addressBook.actions.clear())
   store.dispatch(slices.stopLoss.actions.clear())
-  store.dispatch(slices.stopLossInput.actions.reset())
+  store.dispatch(slices.stopLossInput.actions.clear())
 
   store.dispatch(apiSlices.assetApi.util.resetApiState())
   store.dispatch(apiSlices.marketApi.util.resetApiState())

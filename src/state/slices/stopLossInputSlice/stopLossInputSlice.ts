@@ -31,7 +31,7 @@ export const stopLossInputSlice = createSlice({
     name: 'stopLossInput',
     initialState,
     reducers: {
-        reset: () => initialState,
+        clear: () => initialState,
 
         setSellAssetId: (state, action: PayloadAction<AssetId | undefined>) => {
             state.sellAssetId = action.payload

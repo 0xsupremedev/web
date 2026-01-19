@@ -69,10 +69,7 @@ export const StopLossTab = memo(() => {
 
     const stopLossElement = useMemo(
         () => (
-            <StopLoss
-                tradeInputRef={tradeInputRef}
-                onChangeTab={handleChangeTab}
-            />
+            <StopLoss tradeInputRef={tradeInputRef} />
         ),
         [handleChangeTab],
     )

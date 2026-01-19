@@ -1,6 +1,6 @@
 import { Flex } from '@chakra-ui/react'
 import { useCallback } from 'react'
-import { Route, Routes, useNavigate } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 
 import { SlideTransitionRoute } from '../SlideTransitionRoute'
 import { StopLossConfirm } from './StopLossConfirm'
@@ -9,20 +9,14 @@ import { StopLossList } from './StopLossList'
 
 export type StopLossProps = {
     tradeInputRef: React.MutableRefObject<HTMLDivElement | null>
-    isCompact?: boolean
 }
 
-export const StopLoss = ({ tradeInputRef, isCompact }: StopLossProps) => {
-    const navigate = useNavigate()
-
+export const StopLoss = ({ tradeInputRef }: StopLossProps) => {
     const renderStopLossInput = useCallback(() => {
         return (
-            <StopLossInput
-                isCompact={isCompact}
-                tradeInputRef={tradeInputRef}
-            />
+            <StopLossInput />
         )
-    }, [isCompact, tradeInputRef])
+    }, [])
 
     const renderStopLossConfirm = useCallback(() => {
         return <StopLossConfirm />
